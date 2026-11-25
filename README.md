@@ -1,4 +1,4 @@
-# vlsi-learning-roadmap
+# silicon-design-curriculum
 
 Structured 10-phase learning plan covering the VLSI flow from digital design to analog and mixed-signal. Each phase lists topics, references, tools and a completion criterion. Progress is tracked in [docs/progress-log.md](docs/progress-log.md).
 
