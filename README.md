@@ -1,6 +1,6 @@
 # silicon-design-curriculum
 
-Structured 10-phase learning plan covering the VLSI flow from digital design to analog and mixed-signal. Each phase lists topics, references, tools and a completion criterion. Progress is tracked in [docs/progress-log.md](docs/progress-log.md).
+Structured 12-phase learning plan covering the VLSI flow from digital design to analog and mixed-signal, ending in specialisation and placement preparation. Each phase lists topics, references, tools and a completion criterion. Progress is tracked in [docs/progress-log.md](docs/progress-log.md).
 
 ## Status
 
@@ -8,22 +8,24 @@ Last updated: 2026-11-25.
 
 | Phase | Area | Status |
 |---|---|---|
-| 1 | Digital electronics, Python and git basics | In progress (git remaining) |
+| 1 | Digital electronics | In progress |
 | 2 | CMOS fundamentals | Not started |
-| 3 | Verilog RTL design and basic testbenches | In progress (via [riscv-core](https://github.com/dracsInfi19/riscv-core)) |
-| 4 | Computer architecture | In progress (via [riscv-core](https://github.com/dracsInfi19/riscv-core)) |
-| 5 | SystemVerilog and verification | Not started |
-| 6 | Static timing analysis | Not started |
-| 7 | Synthesis and physical design | Not started |
-| 8 | Tcl and automation | Not started |
-| 9 | Low power and DFT | Not started |
-| 10 | Analog and mixed-signal basics | Not started |
+| 3 | Linux and scripting basics (Linux shell, Python, git) | In progress (git remaining) |
+| 4 | Verilog RTL design and basic testbenches | In progress (via [riscv-core](https://github.com/dracsInfi19/riscv-core)) |
+| 5 | Computer architecture | In progress (via [riscv-core](https://github.com/dracsInfi19/riscv-core)) |
+| 6 | Bus protocols and common IPs | Not started |
+| 7 | SystemVerilog and verification | Not started |
+| 8 | Static timing analysis | Not started |
+| 9 | Synthesis, physical design and Tcl | Not started |
+| 10 | Low power and DFT | Not started |
+| 11 | Analog and mixed-signal basics | Not started |
+| 12 | Specialisation and placement preparation | Not started |
 
-Phases 1 to 3 and 5 to 7 are the most frequently assessed areas in VLSI campus interviews, so they are prioritised. Scripting (Python, git) starts in Phase 1 and is deepened in Phase 8.
+Phases 1 to 7 form the core and are the most frequently assessed areas in VLSI campus interviews. Phases 8 to 11 provide working knowledge of the remaining areas before specialisation in Phase 12.
 
 ## Phase details
 
-### Phase 1: Digital electronics, Python and git basics
+### Phase 1: Digital electronics
 
 **Topics**
 - Number systems, Boolean algebra, K-maps
@@ -31,14 +33,12 @@ Phases 1 to 3 and 5 to 7 are the most frequently assessed areas in VLSI campus i
 - Latches, flip-flops, counters, shift registers
 - FSMs (Mealy and Moore), state minimisation
 - Setup and hold time, metastability, clock domain crossing basics
-- Python basics, git (commit, branch, push)
 
 **References**
 - *Digital Design*, M. Morris Mano
 - *Digital Design and Computer Architecture*, Harris and Harris
 - NPTEL digital circuits courses
 - HDLBits (practice problems)
-- *Python for Everybody*, *Pro Git*
 
 **Completion criterion:** design any FSM or counter on paper and explain setup and hold timing without notes.
 
@@ -62,7 +62,25 @@ Phases 1 to 3 and 5 to 7 are the most frequently assessed areas in VLSI campus i
 
 **Completion criterion:** derive inverter delay and power by hand and simulate a NAND gate in SPICE.
 
-### Phase 3: Verilog RTL design and basic testbenches
+### Phase 3: Linux and scripting basics
+
+**Topics**
+- Linux shell: navigation, permissions, pipes, grep, sed, awk, shell scripts
+- Python basics, file I/O, regular expressions
+- git: commit, branch, merge, push, pull requests
+
+**References**
+- *The Linux Command Line*, William Shotts
+- Linux Journey
+- MIT *The Missing Semester of Your CS Education*
+- *Python for Everybody*
+- *Pro Git*
+
+**Tools:** WSL/Ubuntu, bash, git
+
+**Completion criterion:** automate a simulation run with a shell script, parse its output with Python, and commit the result to a repository with git.
+
+### Phase 4: Verilog RTL design and basic testbenches
 
 **Topics**
 - Synthesizable and non-synthesizable constructs
@@ -70,7 +88,7 @@ Phases 1 to 3 and 5 to 7 are the most frequently assessed areas in VLSI campus i
 - Combinational, sequential and FSM coding styles
 - Parameters and generate blocks
 - Self-checking testbenches and waveform debugging
-- IP blocks: FIFO, UART, SPI, ALU, memory
+- IP blocks: ALU, memory, small datapaths
 
 **References**
 - HDLBits
@@ -80,9 +98,9 @@ Phases 1 to 3 and 5 to 7 are the most frequently assessed areas in VLSI campus i
 
 **Tools:** Icarus Verilog, GTKWave, Yosys
 
-**Completion criterion:** write a synthesizable FIFO from scratch and verify it with a self-checking testbench.
+**Completion criterion:** write a synthesizable datapath block from scratch and verify it with a self-checking testbench.
 
-### Phase 4: Computer architecture
+### Phase 5: Computer architecture
 
 **Topics**
 - RV32I instruction set
@@ -100,7 +118,24 @@ Phases 1 to 3 and 5 to 7 are the most frequently assessed areas in VLSI campus i
 
 **Completion criterion:** the RISC-V core runs a test program and every handled hazard can be explained.
 
-### Phase 5: SystemVerilog and verification
+### Phase 6: Bus protocols and common IPs
+
+**Topics**
+- UART, SPI, I2C
+- AMBA APB, AHB, AXI: channels, handshake, bursts
+- Synchronous and asynchronous FIFO
+- Clock domain crossing: synchronizers, Gray code pointers
+- Arbitration basics
+
+**References**
+- ARM AMBA specifications (APB, AHB, AXI)
+- Clifford Cummings CDC and asynchronous FIFO papers
+- ZipCPU articles on AXI and CDC
+- ChipVerify protocol pages
+
+**Completion criterion:** implement an APB slave and a UART with testbenches, and explain the AXI handshake and asynchronous FIFO pointer logic.
+
+### Phase 7: SystemVerilog and verification
 
 **Topics**
 - SystemVerilog data types, interfaces, classes, randomisation
@@ -119,7 +154,7 @@ Phases 1 to 3 and 5 to 7 are the most frequently assessed areas in VLSI campus i
 
 **Completion criterion:** build a constrained-random testbench with coverage and prove properties on a small design.
 
-### Phase 6: Static timing analysis
+### Phase 8: Static timing analysis
 
 **Topics**
 - Setup and hold equations, slack, critical path
@@ -134,39 +169,28 @@ Phases 1 to 3 and 5 to 7 are the most frequently assessed areas in VLSI campus i
 
 **Completion criterion:** read an OpenSTA report, locate the critical path and fix a violation by hand.
 
-### Phase 7: Synthesis and physical design
+### Phase 9: Synthesis, physical design and Tcl
 
 **Topics**
 - Logic synthesis, SDC constraints, technology mapping
 - Floorplanning, power planning, placement, clock tree synthesis, routing
 - DRC, LVS, antenna rules
 - Congestion, IR drop, signoff concepts
+- Tcl syntax, procedures, lists, regular expressions
+- Python and Makefile automation of tool runs and report parsing
 
 **References**
 - OpenLane and OpenROAD documentation
 - Sky130 PDK documentation
 - Zero to ASIC course material (Matt Venn)
 - *VLSI Physical Design: From Graph Partitioning to Timing Closure*, Kahng et al.
+- Official Tcl tutorials, *Practical Programming in Tcl and Tk*
 
 **Tools:** Yosys, OpenLane, KLayout, Magic
 
-**Completion criterion:** take an own Verilog design to GDS and explain every report.
+**Completion criterion:** take an own Verilog design to GDS, explain every report, and run the full flow with a single command.
 
-### Phase 8: Tcl and automation
-
-**Topics**
-- Tcl syntax, procedures, lists, regular expressions
-- Python scripts for tool runs, report parsing and plotting
-- Makefiles and basic CI
-
-**References**
-- Official Tcl tutorials, *Practical Programming in Tcl and Tk*
-- Python standard library documentation (subprocess, re, argparse)
-- OpenLane and OpenSTA Tcl examples
-
-**Completion criterion:** a single command runs simulation, synthesis and reports for a design.
-
-### Phase 9: Low power and DFT
+### Phase 10: Low power and DFT
 
 **Topics**
 - Power components, clock gating, power gating, multi-Vt, DVFS
@@ -180,7 +204,7 @@ Phases 1 to 3 and 5 to 7 are the most frequently assessed areas in VLSI campus i
 
 **Completion criterion:** explain scan chain operation and where clock gating reduces power.
 
-### Phase 10: Analog and mixed-signal basics
+### Phase 11: Analog and mixed-signal basics
 
 **Topics**
 - Small-signal model, common-source amplifier, current mirrors, differential pair
@@ -193,6 +217,21 @@ Phases 1 to 3 and 5 to 7 are the most frequently assessed areas in VLSI campus i
 - NPTEL analog IC design courses
 
 **Completion criterion:** analyse an amplifier stage and explain PLL and SAR ADC operation.
+
+### Phase 12: Specialisation and placement preparation
+
+**Tracks**
+- Primary: Design Verification (DV)
+- Secondary: Physical Design (PD) and Static Timing Analysis (STA)
+- Additional: RTL Design and FPGA prototyping
+
+**Activities**
+- Depth study in the primary track
+- Interview question practice per topic
+- Aptitude and core CS practice
+- Resume and GitHub portfolio review
+
+**Completion criterion:** answer technical interview questions across Phases 1 to 7 and demonstrate primary-track projects with documented results.
 
 ## Parallel track
 
